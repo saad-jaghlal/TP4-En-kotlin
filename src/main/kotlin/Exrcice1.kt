@@ -43,6 +43,7 @@ class Equipe(val p:Pays,val e:EquipeP,val joueurs: MutableList<joueur>){
         if(recherche(j)!= -1){
             // methode recherche return index
             joueurs[recherche(j)]=j
+
             return true
         }
         return false
@@ -51,13 +52,15 @@ class Equipe(val p:Pays,val e:EquipeP,val joueurs: MutableList<joueur>){
     fun Afficher(){
         // display the player information
         for (joueur in joueurs){
-            println("nom: ${joueur.nom} numero:  ${joueur.numero} equipe: ${joueur.equipe} points: ${joueur.nombreG} Pays : ${p} ")
+//            println("nom: ${joueur.nom} numero:  ${joueur.numero} equipe: ${joueur.equipe} points: ${joueur.nombreG} Pays : ${p} ")
+              println(joueur)
         }
     }
     fun setPoints(j:joueur,points:Int):Boolean{
         if (joueurs.indexOfFirst { it.nom == j.nom }!=-1){
 //            joueurs[recherche(j)].nombreG = points
-            joueurs[recherche(j)] = j.copy(nombreG = points)
+//            joueurs[recherche(j)] = j.copy(nombreG = points)
+              j.nombreG = points
             return true
         }
         return false
@@ -89,7 +92,4 @@ fun main() {
     println("After")
     E1.Afficher()
     E2.Afficher()
-
-
-
 }

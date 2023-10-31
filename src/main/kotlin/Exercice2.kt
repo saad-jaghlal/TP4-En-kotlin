@@ -4,23 +4,22 @@ enum class Difficulte{
 }
 
 //class Cycliste
-class Cycliste(var nom:String,var prenom:String,var nationalite:String,var age:Int,var historique:MutableMap<Etape,Resultat>){
-    fun nouvelleEtape(etape :Etape, resultat :Resultat):Boolean{
+ data class Cycliste(var nom:String,var prenom:String,var nationalite:String,var age:Int,var historique:MutableMap<Etape,Resultat>)
+fun Cycliste.nouvelleEtape(etape :Etape, resultat :Resultat):Boolean{
 
-        if (!historique.containsKey(etape)){
-            historique.put(etape,resultat)
-            return true
-		}
-        return false
-	}
-    override fun toString(): String {
-        var his:String=""
-        for (historiques in historique){
-            his += "\n"+historiques
-        }
-        return "nom: ${nom} prenom: ${prenom} nationalite: ${nationalite} age :${age}  les Etape : ${his}"
-
+    if (!historique.containsKey(etape)){
+        historique.put(etape,resultat)
+        return true
     }
+    return false
+}
+fun Cycliste.toString(): String {
+    var his:String=""
+    for (historiques in historique){
+        his += "\n"+historiques
+    }
+    return "nom: ${nom} prenom: ${prenom} nationalite: ${nationalite} age :${age}  les Etape : ${his}"
+
 }
 //class Resultat
 // class Resultat(var tempe:Date,var classemant:Int){
@@ -50,6 +49,5 @@ fun main(){
     c1.nouvelleEtape(e1, resultat1)
     c1.nouvelleEtape(e2, resultat2)
     c1.nouvelleEtape(e3, resultat3)
-    println(c1.toString())
     println(c1)
 }
